@@ -63,7 +63,7 @@ export async function updateCustomer(req, res) {
     try {
         await db.query(`
             UPDATE customers 
-                SET name = $1,
+            SET name = $1,
                 phone = $2,
                 cpf = $3,
                 birthday = $4
