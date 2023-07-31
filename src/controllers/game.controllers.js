@@ -8,7 +8,7 @@ export async function postGame(req, res) {
         const search = await db.query(`SELECT * FROM games WHERE name = $1;`, [name]);
         if (search.rowCount) return res.sendStatus(409);
     } catch (error) {
-        res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 
     try {

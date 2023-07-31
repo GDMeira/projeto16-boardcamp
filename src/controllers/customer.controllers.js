@@ -40,6 +40,8 @@ export async function getCustomersById(req, res) {
                 FROM customers AS c
                 WHERE id = $1;`, [req.params.id]
         );
+        if (!search.rowCount) return res.sendStatus(404);
+
         res.send(search.rows[0]);
     } catch (error) {
         res.status(500).send(error.message);
