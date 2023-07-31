@@ -52,8 +52,9 @@ export async function returnRental(req, res) {
             SELECT *
                 FROM rentals
                 WHERE id = $1;`, [id]);
+        
+        if (search.rowCount === 0) return res.sendStatus(404);
         if (search.rows[0].returnDate) return res.sendStatus(400); 
-        if (!search.rowCount) return res.sendStatus(404);
 
         const rentDate = dayjs(search.rows[0].rentDate);
         const daysRented = search.rows[0].daysRented;
