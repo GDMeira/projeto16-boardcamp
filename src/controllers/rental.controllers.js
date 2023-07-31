@@ -70,7 +70,7 @@ export async function returnRental(req, res) {
                 "delayFee" = $2
             WHERE id = $3;`, [today, delayFee, id]);
 
-        res.sendStatus(201);
+        res.sendStatus(200);
     } catch (error) {
         res.status(500).send(error.message);
     }
